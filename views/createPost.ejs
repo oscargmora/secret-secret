@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Secret Secret</title>
+	</head>
+	<body>
+		<h1>Create Post</h1>
+
+		<!-- Display authentication errors here -->
+		<% if (errors && errors.authentication) { %>
+		<ul>
+			<% errors.authentication.forEach(function(error) { %>
+			<li><%= error %></li>
+			<% }); %>
+		</ul>
+		<% } %>
+
+		<form action="/createPost" method="post">
+			<label for="title">Title</label>
+			<input
+				type="text"
+				name="title"
+				id="title"
+				maxlength="20"
+				value="<%= inputs ? inputs.title : '' %>"
+				required />
+			<label for="message">Message: </label>
+			<textarea
+				name="message"
+				id="message"
+				cols="30"
+				rows="10"
+				value="<%= inputs ? inputs.message : '' %>"
+				required></textarea>
+			<button type="submit">Submit</button>
+		</form>
+		<a href="/homepage">Go Back to Homepage</a>
+	</body>
+</html>

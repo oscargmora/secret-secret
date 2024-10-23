@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Secret Secret</title>
+	</head>
+	<body>
+		<h1>Log In</h1>
+
+		<!-- Display authentication errors here -->
+		<% if (errors && errors.authentication) { %>
+		<ul>
+			<% errors.authentication.forEach(function(error) { %>
+			<li><%= error %></li>
+			<% }); %>
+		</ul>
+		<% } %>
+
+		<form action="/logIn" method="post">
+			<label for="username">Username: </label>
+			<input
+				type="text"
+				minlength="1"
+				maxlength="20"
+				name="username"
+				id="username"
+				value="<%= inputs ? inputs.username : '' %>"
+				required />
+			<label for="password">Password: </label>
+			<input
+				type="password"
+				minlength="10"
+				maxlength="255"
+				name="password"
+				id="password"
+				required />
+			<button type="submit">Submit</button>
+		</form>
+		<a href="/">Go Back</a>
+	</body>
+</html>

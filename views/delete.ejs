@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Secret Secret</title>
+	</head>
+	<body>
+		<h1>Are you sure you want to delete this post?</h1>
+		<h2><%= message.title %></h2>
+		<h3><%= message.authorFirstName %></h3>
+		<p><%= message.message_text %></p>
+		<p><%= message.timestamp %></p>
+		<form action="/<%= message.id %>/delete" method="post">
+			<a href="/homepage">Cancel</a>
+			<button type="submit">DELETE</button>
+		</form>
+	</body>
+</html>

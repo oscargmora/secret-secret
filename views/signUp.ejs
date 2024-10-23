@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Secret Secret</title>
+	</head>
+	<body>
+		<h1>Sign Up</h1>
+
+		<!-- Display authentication errors here -->
+		<% if (errors && errors.authentication) { %>
+		<ul>
+			<% errors.authentication.forEach(function(error) { %>
+			<li><%= error %></li>
+			<% }); %>
+		</ul>
+		<% } %>
+
+		<form action="/signUp" method="POST">
+			<label for="firstName">First Name: </label>
+			<input
+				type="text"
+				minlength="1"
+				maxlength="20"
+				name="firstName"
+				id="firstName"
+				value="<%= inputs ? inputs.firstName : '' %>"
+				required />
+			<label for="lastName">Last Name: </label>
+			<input
+				type="text"
+				minlength="1"
+				maxlength="20"
+				name="lastName"
+				id="lastName"
+				value="<%= inputs ? inputs.lastName : '' %>"
+				required />
+			<label for="username">Username: </label>
+			<input
+				type="text"
+				minlength="1"
+				maxlength="20"
+				name="username"
+				id="username"
+				value="<%= inputs ? inputs.username : '' %>"
+				required />
+			<label for="password">Password: </label>
+			<input
+				type="password"
+				minlength="10"
+				maxlength="255"
+				name="password"
+				id="password"
+				required />
+			<label for="confirmPassword">Confirm Password: </label>
+			<input
+				type="password"
+				minlength="10"
+				maxlength="255"
+				name="confirmPassword"
+				id="confirmPassword"
+				required />
+			<button type="submit">Submit</button>
+		</form>
+		<a href="/">Go Back</a>
+	</body>
+</html>

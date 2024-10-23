@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Secret Secret</title>
+	</head>
+	<body>
+		<header>
+			<a href="/joinClub">Join a Club</a>
+			<a href="/createPost">Create a Post</a>
+		</header>
+		<h1>Welcome <%= locals.firstName %>!</h1>
+		<ul>
+			<% if (messages && messages.length) { %> <% if (membershipStatus === 'Admin') { %>
+			<ul>
+				<% messages.forEach(function(message) { %>
+
+				<li>
+					<h2><%= message.title %></h2>
+					<h3><%= message.authorFirstName %></h3>
+					<p><%= message.message_text %></p>
+					<p><%= message.timestamp %></p>
+					<a href=<%= `/${message.id}/delete` %>>Delete</a>
+				</li>
+				<% }); %>
+			</ul>
+			<% } else if (membershipStatus === 'Member') { %>
+			<ul>
+				<% messages.forEach(function(message) { %>
+				<li>
+					<h2><%= message.title %></h2>
+					<h3><%= message.authorFirstName %></h3>
+					<p><%= message.message_text %></p>
+					<p><%= message.timestamp %></p>
+				</li>
+				<% }); %>
+			</ul>
+			<% } else { %>
+			<ul>
+				<% messages.forEach(function(message) { %>
+				<li>
+					<h2><%= message.title %></h2>
+					<p><%= message.message_text %></p>
+				</li>
+				<% }); %>
+			</ul>
+			<% } %> <% } %>
+		</ul>
+		<a href="/logOut">Log Out</a>
+	</body>
+</html>
